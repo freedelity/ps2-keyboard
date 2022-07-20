@@ -60,14 +60,14 @@ void fid_timer_init()
 	TIMSK1 = 0;
 	TIFR1 = 0xFF;
 	
-	// with no prescale, 20us is reached after 160 clocks
-	ICR1 = 160;
+	// with prescale of /8, 20us is reached after 40 clocks
+	ICR1 = 40;
 	//ICR1 = 150;
 	
 	TIMSK1 = 0x20; // enable ICF1 interrupt
 	
-	// start timer with no prescale, CTC mode
-	TCCR1B = 0x11;
+	// start timer with prescale /8, CTC mode
+	TCCR1B = 0x12;
 	
 	has_been_init = 1;
 	
